@@ -1,4 +1,5 @@
 # Star Catcher – 2D Arcade Game
+![Gameplay Screenshot](screenshot.png)
 A simple 2D arcade game built independently to explore real-time object spawning, collision systems, and game state management in Godot.
 
 ## Overview
