@@ -21,8 +21,8 @@ The player controls a character that catches falling stars to increase their sco
 - 2D physics and collision system
 
 ## Controls
-Move Left: Left Arrow
-Move Right: Right Arrow
+- Move Left: Left Arrow
+- Move Right: Right Arrow
 
 ## What I Learned
 - Event-driven programming
@@ -32,4 +32,4 @@ Move Right: Right Arrow
 - Structuring small software systems independently
 
 ## Author
-Waseem Ada
+WaseemAda
