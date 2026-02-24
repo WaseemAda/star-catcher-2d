@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://ckn2j7vnsx55r"]
+
+[ext_resource type="Script" uid="uid://ca4uamqk8f7wm" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://12d5hajoe1hu" path="res://star.tscn" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://bdo24vmcvl64" path="res://player.gd" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://cwkelivej6yvs" path="res://9711c4fa-0840-404c-9e4b-4faff698c147.png" id="3_lquwl"]
+[ext_resource type="Texture2D" uid="uid://bt5ia2wpjio5o" path="res://57e04bf8-09ce-41d6-83e1-557121d8c2cb.png" id="5_7mycd"]
+[ext_resource type="FontFile" uid="uid://dws5ypp5vwc5u" path="res://game-paused-demo/Game Paused DEMO.otf" id="6_7mycd"]
+[ext_resource type="AudioStream" uid="uid://b0qltfabi4omb" path="res://sounds/magical-storytime-389087.mp3" id="7_kek77"]
+[ext_resource type="AudioStream" uid="uid://5s0wwqbay1fx" path="res://sounds/sound-effect-twinklesparkle-115095.mp3" id="8_4c57u"]
+[ext_resource type="AudioStream" uid="uid://tbg8uw2s8i4v" path="res://sounds/marimba-lose-250960.mp3" id="9_efxa6"]
+[ext_resource type="AudioStream" uid="uid://yxl2fbnrtlhe" path="res://sounds/menu-click-89198.mp3" id="10_4c57u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(156.25, 191.625)
+
+[node name="Main" type="Area2D"]
+script = ExtResource("1_h2yge")
+star_scene = ExtResource("2_1bvp3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 536.5)
+scale = Vector2(1.251302, 1.0537109)
+texture = ExtResource("3_lquwl")
+
+[node name="Player" type="Area2D" parent="."]
+position = Vector2(960, 950)
+script = ExtResource("2_h2yge")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(8.750025, -2.4999695)
+scale = Vector2(0.21533202, 0.19824225)
+texture = ExtResource("5_7mycd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(8.875, -7.1875)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 1625.0
+offset_top = 34.0
+offset_right = 1851.0
+offset_bottom = 110.0
+theme_override_fonts/font = ExtResource("6_7mycd")
+theme_override_font_sizes/font_size = 60
+text = "Score: 0"
+
+[node name="GameOverLabel" type="Label" parent="."]
+offset_left = 703.0
+offset_top = 463.0
+offset_right = 1246.0
+offset_bottom = 605.0
+theme_override_fonts/font = ExtResource("6_7mycd")
+theme_override_font_sizes/font_size = 100
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="."]
+offset_left = 809.0
+offset_top = 689.0
+offset_right = 1124.0
+offset_bottom = 758.0
+theme_override_fonts/font = ExtResource("6_7mycd")
+theme_override_font_sizes/font_size = 60
+text = "Restart"
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_kek77")
+autoplay = true
+
+[node name="CatchSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_4c57u")
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_efxa6")
+
+[node name="ButtonClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_4c57u")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

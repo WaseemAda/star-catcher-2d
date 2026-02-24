@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://drq6ywcf5yxvo"]
+
+[ext_resource type="Script" uid="uid://ch7v028kwoo7x" path="res://start_menu.gd" id="1_ia0g5"]
+[ext_resource type="Texture2D" uid="uid://rssh2yt1snm1" path="res://1520033e-b1ce-4904-8c93-dd61300ac846.png" id="2_v2mkm"]
+[ext_resource type="FontFile" uid="uid://dws5ypp5vwc5u" path="res://game-paused-demo/Game Paused DEMO.otf" id="2_vpdu5"]
+[ext_resource type="AudioStream" uid="uid://yxl2fbnrtlhe" path="res://sounds/menu-click-89198.mp3" id="4_v2mkm"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ia0g5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(966, 539.00006)
+scale = Vector2(1.2591146, 1.0507814)
+texture = ExtResource("2_v2mkm")
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 686.0
+offset_top = 264.0
+offset_right = 1278.0
+offset_bottom = 345.0
+theme_override_fonts/font = ExtResource("2_vpdu5")
+theme_override_font_sizes/font_size = 80
+text = "Catch The Stars"
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 846.0
+offset_top = 448.0
+offset_right = 1094.0
+offset_bottom = 525.0
+theme_override_fonts/font = ExtResource("2_vpdu5")
+theme_override_font_sizes/font_size = 50
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 852.0
+offset_top = 607.0
+offset_right = 1102.0
+offset_bottom = 682.0
+theme_override_fonts/font = ExtResource("2_vpdu5")
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[node name="ButtonClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_v2mkm")
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_pressed"]
